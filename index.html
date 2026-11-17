@@ -345,7 +345,7 @@ section {
 /* ABOUT */
 .about-grid {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 300px 1fr;
     gap: 70px;
     align-items: center;
 }
@@ -358,7 +358,7 @@ section {
 }
 
 .avatar-container {
-    width: 260px;
+    width: 280px; /* Increased size to better display the portrait */
     aspect-ratio: 1;
     margin: auto;
     position: relative;
@@ -391,8 +391,14 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: rotate(-32deg) scale(1.25);
+    object-position: center 10%; /* Frames the face nicely */
+    transform: scale(1.1); /* Slight zoom to remove edges */
     display: block;
+    transition: transform 0.5s ease;
+}
+
+.avatar-container-inner:hover .avatar-img {
+    transform: scale(1.15); /* Adds a nice hover effect */
 }
 
 .about-copy p {
@@ -727,7 +733,7 @@ footer span {
         height: 500px;
     }
     .avatar-container {
-        width: 220px;
+        width: 240px;
     }
 }
 </style>
