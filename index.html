@@ -326,15 +326,24 @@ section {
     opacity: 0.5;
 }
 
-.avatar-img {
+.avatar-container-inner {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     border-radius: 50%;
     border: 8px solid white;
     box-shadow: 0 15px 35px rgba(25,54,88,.15);
     position: relative;
     z-index: 1;
+    overflow: hidden;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This rotation straightens the camera tilt, scale prevents empty edges */
+    transform: rotate(-32deg) scale(1.25);
+    display: block;
 }
 
 .about-copy p {
@@ -757,9 +766,11 @@ Download Resume
 <section id="about" class="soft">
 <div class="container about-grid">
 
-<!-- Updated Profile Photo Avatar -->
+<!-- Updated Profile Photo Avatar Container with Rotation Fix -->
 <div class="avatar-container">
-    <img src="Snapchat-1313749337.jpg" alt="Nidhi Kumari" class="avatar-img">
+    <div class="avatar-container-inner">
+        <img src="Snapchat-1313749337.jpg" alt="Nidhi Kumari" class="avatar-img">
+    </div>
 </div>
 
 <div class="about-copy">
@@ -811,7 +822,6 @@ in my academic and personal projects.
 <p>HTML5, CSS3 and responsive web design with modern user interfaces.</p>
 </div>
 
-<!-- Updated to include C++ -->
 <div class="skill-card">
 <div class="skill-icon">💻</div>
 <h3>Programming</h3>
