@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nidhi Kumari | Portfolio</title>
+<title>Nidhi Kumari | Profile</title>
 
 <style>
 :root {
@@ -56,6 +56,7 @@ body {
     background-image: radial-gradient(#d1d9e6 1px, transparent 1px);
     background-size: 24px 24px;
     line-height: 1.65;
+    overflow-x: hidden;
 }
 
 a {
@@ -90,10 +91,11 @@ header {
 }
 
 .brand {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     transition: transform 0.3s ease;
+    text-transform: uppercase;
 }
 
 .brand:hover {
@@ -107,6 +109,7 @@ header {
     color: #9ec5ff;
     letter-spacing: 0.5px;
     margin-top: 2px;
+    text-transform: none;
 }
 
 nav {
@@ -122,6 +125,7 @@ nav a {
     position: relative;
     letter-spacing: 1px;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
 /* Animated Nav Underline */
@@ -138,17 +142,25 @@ nav a::after {
 
 nav a:hover {
     color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 nav a:hover::after {
     width: 100%;
 }
 
-/* HOME - Animated Gradient Background */
+/* HOME - Animated Gradient Background & Shapes */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+@keyframes floatShape {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(30px, -50px) scale(1.1) rotate(10deg); }
+    66% { transform: translate(-20px, 20px) scale(0.9) rotate(-5deg); }
+    100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 
 .hero {
@@ -164,6 +176,32 @@ nav a:hover::after {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* Animated Background Blobs */
+.shape {
+    position: absolute;
+    filter: blur(60px);
+    z-index: 0;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatShape 15s infinite ease-in-out;
+}
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(45, 120, 232, 0.4);
+    top: -100px;
+    left: -100px;
+}
+.shape-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(158, 197, 255, 0.2);
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
 .hero::after {
     content: "NK";
     position: absolute;
@@ -173,6 +211,7 @@ nav a:hover::after {
     font-weight: 900;
     color: rgba(255,255,255,.03);
     user-select: none;
+    z-index: 0;
 }
 
 /* Entry Animation for Hero Content */
@@ -202,7 +241,7 @@ h1 {
     line-height: 1.1;
     margin: 16px 0;
     font-weight: 800;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .hero p {
@@ -252,12 +291,24 @@ h1 {
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: white;
-    box-shadow: 0 8px 20px rgba(255,255,255,0.1);
+    box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+}
+
+/* Button Pulse Animation */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(45, 120, 232, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(45, 120, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(45, 120, 232, 0); }
+}
+
+.btn-pulse {
+    animation: pulseGlow 2s infinite;
 }
 
 /* GENERAL SECTIONS */
 section {
     padding: 95px 0;
+    position: relative;
 }
 
 /* Gradient Section Titles */
@@ -314,7 +365,6 @@ section {
     animation: float 5s ease-in-out infinite;
 }
 
-/* Glowing aura behind the image */
 .avatar-container::before {
     content: '';
     position: absolute;
@@ -341,7 +391,6 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* This rotation straightens the camera tilt, scale prevents empty edges */
     transform: rotate(-32deg) scale(1.25);
     display: block;
 }
@@ -377,7 +426,7 @@ section {
     box-shadow: 0 5px 15px var(--accent-glow);
 }
 
-/* CARDS (Skills, Projects, Info) */
+/* CARDS */
 .skills-grid, .projects-grid, .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -397,7 +446,6 @@ section {
     overflow: hidden;
 }
 
-/* Decorative top border for skill cards */
 .skill-card::before {
     content: '';
     position: absolute;
@@ -414,7 +462,6 @@ section {
     opacity: 1;
 }
 
-/* Hover Lift Effect */
 .skill-card:hover,
 .project-card:hover,
 .info-card:hover {
@@ -540,7 +587,7 @@ section {
     border-radius: 4px;
 }
 
-/* CERTIFICATES */
+/* CERTIFICATES & RESUME EMBED */
 .certificates-list {
     display: grid;
     gap: 60px;
@@ -553,8 +600,7 @@ section {
     align-items: center;
 }
 
-.certificate-img,
-.reference-img {
+.certificate-img {
     width: 100%;
     height: auto;
     display: block;
@@ -574,53 +620,32 @@ iframe.certificate-img {
     height: 380px;
 }
 
-/* RESUME */
-.resume-panel {
-    background: linear-gradient(135deg, #17232e, #263441);
-    color: white;
+/* RESUME PREVIEW CONTAINER */
+.resume-preview-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 0;
+    height: 850px;
     border-radius: 16px;
-    padding: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    position: relative;
     overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border: 1px solid var(--line);
+    background: white;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
 }
 
-/* Abstract shapes in resume panel */
-.resume-panel::after {
-    content: '';
-    position: absolute;
-    right: -50px;
-    top: -50px;
-    width: 200px;
-    height: 200px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 50%;
-}
-.resume-panel::before {
-    content: '';
-    position: absolute;
-    right: 100px;
-    bottom: -80px;
-    width: 150px;
-    height: 150px;
-    background: rgba(45, 120, 232, 0.1);
-    border-radius: 50%;
+.resume-preview-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(45, 120, 232, 0.25);
+    border-color: #c8d1db;
 }
 
-.resume-panel p {
-    color: #cbd5df;
-    margin-top: 8px;
-    font-size: 17px;
-    position: relative;
-    z-index: 1;
-}
-.resume-panel h2, .resume-panel .btn {
-    position: relative;
-    z-index: 1;
+.resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
 /* FOOTER */
@@ -657,6 +682,9 @@ footer span {
     iframe.certificate-img {
         height: 450px;
     }
+    .resume-preview-container {
+        height: 700px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -670,10 +698,6 @@ footer span {
     }
     .skills-grid, .projects-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .resume-panel {
-        align-items: flex-start;
-        flex-direction: column;
     }
     .contact-grid {
         grid-template-columns: 1fr;
@@ -699,6 +723,9 @@ footer span {
     iframe.certificate-img {
         height: 300px;
     }
+    .resume-preview-container {
+        height: 500px;
+    }
     .avatar-container {
         width: 220px;
     }
@@ -713,8 +740,8 @@ footer span {
 <div class="container nav">
 
 <a class="brand" href="#home">
-NIDHI KUMARI
-<span>Front-End Developer | BCA Student</span>
+PROFILE
+<span>Nidhi Kumari | Front-End Developer</span>
 </a>
 
 <nav>
@@ -724,6 +751,7 @@ NIDHI KUMARI
 <a href="#projects">PROJECTS</a>
 <a href="#education">EDUCATION</a>
 <a href="#certificate">CERTIFICATES</a>
+<a href="#resume">RESUME</a>
 <a href="#contact">CONTACT</a>
 </nav>
 
@@ -734,6 +762,8 @@ NIDHI KUMARI
 
 <!-- HOME -->
 <section class="hero" id="home">
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
 <div class="container">
 <div class="hero-content">
 
@@ -752,9 +782,8 @@ user-friendly web pages using HTML and CSS.
 <div class="actions">
 <a class="btn" href="#contact">Contact Me</a>
 
-<a class="btn btn-outline"
-href="Nidhi_Kumari_Creative_Resume_Perfect_One_Page.pdf" download>
-Download Resume
+<a class="btn btn-outline" href="#resume">
+View Resume
 </a>
 </div>
 
@@ -766,7 +795,7 @@ Download Resume
 <section id="about" class="soft">
 <div class="container about-grid">
 
-<!-- Updated Profile Photo Avatar Container with Rotation Fix -->
+<!-- Profile Photo Avatar -->
 <div class="avatar-container">
     <div class="avatar-container-inner">
         <img src="Image.jpg" alt="Nidhi Kumari" class="avatar-img">
@@ -984,22 +1013,27 @@ on computer science fundamentals and programming logic.
 </div>
 </section>
 
-<!-- RESUME -->
-<section>
-<div class="container resume-panel">
+<!-- VISIBLE RESUME -->
+<section id="resume">
+<div class="container">
 
-<div>
-<h2 style="font-size: 32px; margin-bottom: 12px;">My Resume</h2>
-<p>
-Download my complete one-page resume for deeper insights into
-my academic profile, technical toolkit, and projects.
+<h2 class="section-title">My Resume</h2>
+<div class="section-line"></div>
+
+<p class="intro">
+Review my complete academic profile, technical toolkit, and projects directly below.
 </p>
+
+<div class="resume-preview-container">
+    <iframe class="resume-iframe" src="Nidhi_Kumari_Creative_Resume_Perfect_One_Page.pdf" title="Nidhi Kumari Resume"></iframe>
 </div>
 
-<a class="btn"
-href="Nidhi_Kumari_Creative_Resume_Perfect_One_Page.pdf" download style="background: white; color: var(--ink); border-color: white;">
-Download PDF ↓
-</a>
+<!-- Download Button at the end -->
+<div style="text-align: center; margin-top: 48px;">
+    <a class="btn btn-pulse" href="Nidhi_Kumari_Creative_Resume_Perfect_One_Page.pdf" download style="padding: 16px 36px; font-size: 16px;">
+        Download Resume PDF ↓
+    </a>
+</div>
 
 </div>
 </section>
