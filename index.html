@@ -358,7 +358,7 @@ section {
 }
 
 .avatar-container {
-    width: 280px; /* Increased size to better display the portrait */
+    width: 280px; 
     aspect-ratio: 1;
     margin: auto;
     position: relative;
@@ -391,14 +391,14 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 10%; /* Frames the face nicely */
-    transform: scale(1.1); /* Slight zoom to remove edges */
+    object-position: center 10%; 
+    transform: scale(1.1); 
     display: block;
     transition: transform 0.5s ease;
 }
 
 .avatar-container-inner:hover .avatar-img {
-    transform: scale(1.15); /* Adds a nice hover effect */
+    transform: scale(1.15); 
 }
 
 .about-copy p {
@@ -452,7 +452,9 @@ section {
     overflow: hidden;
 }
 
-.skill-card::before {
+.skill-card::before,
+.project-card::before,
+.info-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -464,7 +466,9 @@ section {
     transition: opacity 0.3s ease;
 }
 
-.skill-card:hover::before {
+.skill-card:hover::before,
+.project-card:hover::before,
+.info-card:hover::before {
     opacity: 1;
 }
 
@@ -873,7 +877,7 @@ in my academic and personal projects.
 </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (UPDATED WITH REAL PROJECTS) -->
 <section id="projects" class="soft">
 <div class="container">
 
@@ -881,27 +885,25 @@ in my academic and personal projects.
 <div class="section-line"></div>
 
 <p class="intro">
-A selection of front-end layouts created to practise
-structure, styling and responsive design.
+A selection of practical applications and web layouts created to practise
+structure, styling, and logic building.
 </p>
 
 <div class="projects-grid" style="margin-top:40px">
 
 <div class="project-card">
-<div class="tag">WEB DESIGN</div>
-<h3>Restaurant Website</h3>
+<div class="tag">WEB DEVELOPMENT</div>
+<h3>Cultural Festival Website</h3>
 <p>
-Designed a responsive restaurant interface using HTML
-and CSS, with a clean layout for presenting a digital menu.
+Developed a multi-page interactive website for the Durga Puja festival featuring responsive navigation, CSS animations, and integrated audio controls.
 </p>
 </div>
 
 <div class="project-card">
-<div class="tag">PERSONAL PROJECT</div>
-<h3>Personal Portfolio</h3>
+<div class="tag">FRONT-END</div>
+<h3>Personal Website</h3>
 <p>
-Created a portfolio layout to present academic background,
-technical skills and front-end projects.
+Designed and coded a responsive personal website to showcase my academic background, technical toolkit, and development projects.
 </p>
 <a class="text-link"
 href="https://apsnidhi123.github.io/nidhi"
@@ -911,11 +913,10 @@ Visit GitHub Profile ↗
 </div>
 
 <div class="project-card">
-<div class="tag">EDUCATION</div>
-<h3>College Website</h3>
+<div class="tag">C++ PROGRAMMING</div>
+<h3>Interactive Console Games</h3>
 <p>
-Developed a responsive educational website layout as
-a practical front-end development project.
+Engineered logic-driven C++ console games, including Tic-Tac-Toe and traditional multiplayer games, featuring score accumulation and arrays.
 </p>
 </div>
 
